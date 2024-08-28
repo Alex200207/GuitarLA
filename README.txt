@@ -145,5 +145,39 @@ Debido a que le podemos pasar una dependencia y estar escuchando por los
 cambios que sucedan en una varible, puede actualizar el componente cuando
 este cambio suceda
 
+------------------------------------------------------------------------------------------
+
+Que son los Statements en JavaScript
+
+Una app de js es una serie de statements ,cada statement es una instruccion
+para hacer algo.
+Algunos Statements son:
+
+-creacion de variables
+-codigo condicionales con if 
+-Lanzar errores con throw new Error()
+-iterar con while o forma
+
+estos se deben escribir antes del return en React
+
+Expresiones en JavaScript
+
+Una expresion es algo que produce valor.
+Alguna Expresiones son:
+-Ternarios
+-Utilizar un Array Method que genere un nuevo Array
+-.map que genera un nuevo array a diferencia de forEach
+
+//-------------------------------------------------------------------------------------------------
+
+Que son los props en react
+
+puedes pasarle informacion de un componente padre al hijo por medio
+de estas props.
+
+Los props se parecen a los atributos en HTML, pero puedes pasarles arrays, objetos o funciones
+
+los props se pasan del padre al hijo , nunca se pueden pasar del hijo al padre
+
 
 
