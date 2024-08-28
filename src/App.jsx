@@ -1,8 +1,11 @@
+
 import Footer from "./components/Footer"
 import Guitarra from "./components/Guitarra"
 import Header from "./components/Header"
 
 function App() {
+
+
   return (
     <>
     <Header />
