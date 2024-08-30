@@ -1,6 +1,14 @@
 import React from "react";
 
+//state derivado para ver si el carrito esta vacio o no usando el state cart que se pasa como prop desde el componente padre
+//si el carrito esta vacio muestra un mensaje de que esta vacio si no muestra la tabla con los productos 
+
+
+
 function Header({cart}) {
+  
+  const isEmpty = () => cart.length === 0 
+
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -24,7 +32,7 @@ function Header({cart}) {
 
               <div id="carrito" className="bg-white p-3">
                 
-                {cart.length === 0 ?(//si el carrito esta vacio muestra el mensaje de que esta vacio si no muestra la tabla con los productos
+                {isEmpty() ?(//si el carrito esta vacio muestra el mensaje de que esta vacio si no muestra la tabla con los productos
                   <p className="text-center">El carrito esta vacio</p>
                 ):(
                 <table className="w-100 table">
@@ -87,5 +95,6 @@ function Header({cart}) {
     </header>
   );
 }
+
 
 export default Header;
