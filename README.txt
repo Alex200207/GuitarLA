@@ -39,6 +39,11 @@ Que es JSX?
   useEffect
   useContext
 
+
+Un hook en React es una función especial que te permite "engancharte" a las características internas de React,
+como el estado y el ciclo de vida, dentro de los componentes funcionales. Los hooks te permiten usar estas capacidades
+sin necesidad de convertir tus componentes en clases, lo que simplifica y moderniza el manejo de la lógica en tus component
+
   Hooks disponibles en react
 
 // Conceptos de cada hook:
