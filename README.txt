@@ -179,5 +179,49 @@ Los props se parecen a los atributos en HTML, pero puedes pasarles arrays, objet
 
 los props se pasan del padre al hijo , nunca se pueden pasar del hijo al padre
 
+//-------------------------------------------------------------------------------------------------
+
+Eventos en React
+
+La forma en que react manjea los eventos es muy similar a como lo hace JavaScript de forma nativa con algunos cambios
+
+Los elementos son camelCase , es decir en lugar de onchange se utiliza onChange, en lugar de onclick se utiliza onClick.
+
+tambien a diferencia de JS y HTML, donde se coloca el nombre de las funciones en un string en React(JSX) se utiliza funcion entre
+{}.
+
+ejem.
+
+HTML----base
+<button onclick="getLatesOrders()">
+    Descargar pedidos
+</button>
+
+
+JSX(React) : recordar que en react en ves de tener comillas sencillas o disponibles
+se usan llaves para dar a entender a react que es codigo JS.
+
+<button onClick={getLatesOrders()}>
+    Descargar pedidos
+</button>
+
+ejem sintaxis de evento submit 
+
+HTML:
+<form onsubmit = "agregarClientes(); return false">
+    <button type = "submit">Submit</button>
+</form>
+
+
+
+JSX el evento onSubmit:
+
+<form onSubmit={handleSubmit}> handleSubmit es una convencion de react
+    <button type="submit"> agregar cliente</button>
+</form>
+
+
+
+
 
 
