@@ -1,7 +1,7 @@
 // eslint-disable-next-line react/prop-types
 function Guitarra({guitarra,addToCart}) {//Recibe como argumento el objeto guitarra que se pasa como propiedad al componente Guitarra en App.jsx
 
-// eslint-disable-next-line react/prop-types
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const {id,name,image,description,price} = guitarra;//Destructuring de guitarra para obtener los valores de cada propiedad del objeto guitarra
 return (
     
