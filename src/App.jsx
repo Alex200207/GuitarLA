@@ -8,6 +8,8 @@ function App() {
   const [data] = useState(db);//Inicializa el estado data con el valor de la constante db que contiene la base de datos de guitarras
   const [cart,setCart] = useState([]);//Inicializa el estado cart con un array vacío
 
+  const MAX_ITEMS = 5;//Establece la cantidad máxima de guitarras que se pueden agregar al carrito
+
   function addToCart(item){
     //Que siginifca la inmutabilidad en react
     //los states no se deben modificar directamente pues son inmutables
@@ -28,10 +30,57 @@ function App() {
     
   }
 
+  //funcion para eliminar un elemento del carrito
+  function removeFromCart(id){
+    setCart(prevCart => prevCart.filter(guitar => guitar.id !== id))//Actualiza el estado cart eliminando el objeto guitarra con 
+    //el id que se pasa como argumento 
+    /*Decimos que filtre las guitarras cuyo id sea diferente al id pasado porque diferente ?? pxq al precionar una y quitarla
+    mantendremos las otras dos*/
+  }
+
+
+  //este es otro state derivado de cart
+  //funcion para aumentar la cantidad de un elemento del carrito
+  function increaseQuantity(id){//Recibe como argumento el id del objeto guitarra
+    const updateCart = cart.map(item =>{//Crea un nuevo array con el estado cart actualizado 
+      if(item.id === id && item.quantity < MAX_ITEMS ){//Si el id del objeto guitarra es igual al id pasado como argumento
+        return{//Retorna el objeto guitarra con la cantidad aumentada en 1
+          ...item//Copia el objeto guitarra
+          ,quantity:item.quantity + 1//Aumenta la cantidad del objeto guitarra en 1
+        }
+      }
+      return item//Retorna el objeto guitarra sin modificar
+    })
+    setCart(updateCart)//Actualiza el estado cart con el nuevo array
+  }
+
+  //creamos una funcion para decrementar la cantidad de un elemento del carrito
+function decreaseQuantity(id){
+  const updateCart = cart.map(item => {
+    if(item.id === id && item.quantity > 1){
+      return{
+        ...item,
+        quantity:item.quantity - 1
+      }
+      
+    }
+    return item
+  })
+  setCart(updateCart)
+}
+
+
+
+
+
   return (
     <>
       <Header 
-      cart={cart}/>
+      cart={cart}
+      removeFromCart={removeFromCart }
+      increaseQuantity={increaseQuantity}
+      decreaseQuantity={decreaseQuantity}
+      />
 
       <main className="container-xl mt-5">
         <h2 className="text-center">Nuestra Colección</h2>
