@@ -118,6 +118,11 @@ no es necesarioa hacer nada mas  y tu interfaz siempre estara sincronizada con e
 Para modificar el state , se utiliza la funcion que extraemos cuando declaramos el state en nuestro componente
 setCustomber.
 
+El estado es sincrono o es asincrono
+
+el state de react es asincrono significa que el state significa que el state no se actualiza inmediatamente si no despues 
+unos millisegundos despues
+
 
 Reglas de los Hooks..
 

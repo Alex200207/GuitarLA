@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import React from "react";
 
-function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity}) {
+function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearCart }) {
   const isEmpty = useMemo(() => cart.length === 0, [cart]); //useMemo es un hook que se usa para memorizar un valor y solo se recalcula cuando las dependencias cambian
   //lo ocuparemos para que tenga un mejor rendimiento y no se recalcule en cada renderizado
   /*useMemo es una forma en la cual puedes decir no hagas render completo de mi aplicacion hasta que no cambie algo establecido
@@ -61,7 +61,7 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity}) {
                       </thead>
                       <tbody>
                         {cart.map((guitar) => (
-                          <tr key={guitar.id}>
+                          <tr key={guitar.name}>
                             <td>
                               <img
                                 className="img-fluid"
@@ -106,7 +106,10 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity}) {
                     </p>
                   </>
                 )}
-                <button className="btn btn-dark w-100 mt-3 p-2">
+                <button 
+                className="btn btn-dark w-100 mt-3 p-2"
+                onClick={clearCart}
+                >
                   Vaciar Carrito
                 </button>
               </div>

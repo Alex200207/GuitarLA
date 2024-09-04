@@ -1,14 +1,28 @@
-import { useState } from "react"; // Asegúrate de importar useState
+import { useState,useEffect } from "react"; // Asegúrate de importar useState
 import { db } from "./data/db";
 import Footer from "./components/Footer";
 import Guitarra from "./components/Guitarra";
 import Header from "./components/Header";
 
 function App() {
+
+const initialCart = () => {
+  const localStorageCart = localStorage.getItem('cart')//Obtiene el valor del localStorage con la clave 'cart'
+  return localStorageCart ? JSON.parse(localStorageCart) : []//Si el valor del localStorage es diferente de nulo, retorna el valor del localStorage como un objeto
+}
+
   const [data] = useState(db);//Inicializa el estado data con el valor de la constante db que contiene la base de datos de guitarras
-  const [cart,setCart] = useState([]);//Inicializa el estado cart con un array vacío
+  const [cart,setCart] = useState(initialCart);//Inicializa el estado cart con un array vacío
 
   const MAX_ITEMS = 5;//Establece la cantidad máxima de guitarras que se pueden agregar al carrito
+  const MIN_ITEMS = 1;//Establece la cantidad mínima de guitarras que se pueden agregar al carrito
+
+  useEffect(()=>{//usamos useEffect para guardar el estado cart en el localStorage cada vez que cambie el estado cart
+    localStorage.setItem('cart',JSON.stringify(cart))
+    //guarda el estado cart en el localStorage como un string se pasa un nombre y el valor que se quiere guardar 
+    //no se puede guardar un objeto directamente en el localStorage por eso se usa JSON.stringify para convertir el objeto en un string
+    //Ni arreglos ni objetos se pueden guardar en el localStorage.
+  },[cart])
 
   function addToCart(item){
     //Que siginifca la inmutabilidad en react
@@ -19,7 +33,7 @@ function App() {
     //depues podemos usar una codicion para evitar duplicados y aumentar la cantidad de elementos
 
     if(itemExiste >= 0){
-      console.log("ya existe")
+      if(cart[itemExiste].quantity >= MAX_ITEMS) return //Si la cantidad del objeto guitarra es mayor o igual a la cantidad máxima permitida, no hace nada
       const updatedCart = [...cart]//Crea una copia del estado cart para no modificarlo directamente es lo ideal
       updatedCart[itemExiste].quantity++//Aumenta la cantidad de la propiedad quantity del objeto guitarra en 1
       setCart(updatedCart)//Actualiza el estado cart con la copia actualizada
@@ -57,7 +71,7 @@ function App() {
   //creamos una funcion para decrementar la cantidad de un elemento del carrito
 function decreaseQuantity(id){
   const updateCart = cart.map(item => {
-    if(item.id === id && item.quantity > 1){
+    if(item.id === id && item.quantity > MIN_ITEMS){
       return{
         ...item,
         quantity:item.quantity - 1
@@ -67,6 +81,10 @@ function decreaseQuantity(id){
     return item
   })
   setCart(updateCart)
+}
+
+function clearCart(){
+  setCart([])
 }
 
 
@@ -80,6 +98,7 @@ function decreaseQuantity(id){
       removeFromCart={removeFromCart }
       increaseQuantity={increaseQuantity}
       decreaseQuantity={decreaseQuantity}
+      clearCart={clearCart}
       />
 
       <main className="container-xl mt-5">
