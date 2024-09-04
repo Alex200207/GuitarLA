@@ -230,6 +230,11 @@ JSX el evento onSubmit:
     <button type="submit"> agregar cliente</button>
 </form>
 
+----------------------------------------------------------------
+deploy 
+usamos netlify hosting gratis y sin publicidad
+me va permitir subir mis proyectos gratis y sin publicidad proyectos de react html,js entre otras
+
 
 
 
