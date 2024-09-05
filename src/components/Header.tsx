@@ -108,7 +108,7 @@ function Header({
                             </td>
                             <td>
                               <button
-                                className="btn btn-danger"
+                                className="btn btn-danger button-delete"
                                 type="button"
                                 onClick={() => removeFromCart(guitar.id)}
                               >

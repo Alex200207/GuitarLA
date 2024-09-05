@@ -728,6 +728,7 @@ button:not(:disabled),
   .text-md-start {
     text-align: left !important;
   }
+
 }
 @media (min-width: 1200px) {
   .fs-1 {
@@ -773,5 +774,22 @@ button:not(:disabled),
     animation-timing-function: ease-in-out;
     animation-name: animarImagen;
     z-index: 10;
+  }
+  
+
+}
+@media (min-width: 370px) {
+
+  .carrito:hover #carrito {
+    min-width: 340px ;
+    max-width: 340px ;
+  }
+  .table {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .button-delete{
+    margin: 0 10px;
   }
 }
