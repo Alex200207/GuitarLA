@@ -1,7 +1,13 @@
 import { useMemo } from "react";
 import React from "react";
-
-function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearCart }) {
+import 'bootstrap/dist/css/bootstrap.min.css';
+function Header({
+  cart,
+  removeFromCart,
+  increaseQuantity,
+  decreaseQuantity,
+  clearCart,
+}) {
   const isEmpty = useMemo(() => cart.length === 0, [cart]); //useMemo es un hook que se usa para memorizar un valor y solo se recalcula cuando las dependencias cambian
   //lo ocuparemos para que tenga un mejor rendimiento y no se recalcule en cada renderizado
   /*useMemo es una forma en la cual puedes decir no hagas render completo de mi aplicacion hasta que no cambie algo establecido
@@ -23,6 +29,12 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearC
     [cart]
   );
 
+  const totalItems = useMemo(//state derivado para ver cuantos productos hay en el carrito
+    () => cart.reduce((total, item) => total + item.quantity, 0),//se recorre el carrito y se suma la cantidad de cada producto
+    [cart]//dependencia del useMemo
+  );
+
+
   return (
     <header className="py-5 header">
       <div className="container-xl">
@@ -43,6 +55,12 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearC
                 src="/img/carrito.png"
                 alt="imagen carrito"
               />
+          
+              {totalItems > 0 && (
+                <span className="badge bg-danger rounded-circle position-absolute top-0 start-100 translate-middle">
+                  {totalItems}
+                </span>
+              )}
 
               <div id="carrito" className="bg-white p-3">
                 {isEmpty ? ( //si el carrito esta vacio muestra el mensaje de que esta vacio si no muestra la tabla con los productos
@@ -73,26 +91,27 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearC
                             <td className="fw-bold">{guitar.price}</td>
                             <td className="flex align-items-start gap-4">
                               <button
-                               type="button"
+                                type="button"
                                 className="btn btn-dark"
-                                onClick = {()=> decreaseQuantity(guitar.id)}
-                                >
+                                onClick={() => decreaseQuantity(guitar.id)}
+                              >
                                 -
                               </button>
                               {guitar.quantity}
                               <button
-                               type="button"
+                                type="button"
                                 className="btn btn-dark"
-                                onClick={()=> increaseQuantity(guitar.id)}>
+                                onClick={() => increaseQuantity(guitar.id)}
+                              >
                                 +
                               </button>
                             </td>
                             <td>
                               <button
-                               className="btn btn-danger"
+                                className="btn btn-danger"
                                 type="button"
-                                onClick ={() =>removeFromCart(guitar.id)}
-                                >
+                                onClick={() => removeFromCart(guitar.id)}
+                              >
                                 X
                               </button>
                             </td>
@@ -106,9 +125,9 @@ function Header({ cart, removeFromCart,increaseQuantity ,decreaseQuantity,clearC
                     </p>
                   </>
                 )}
-                <button 
-                className="btn btn-dark w-100 mt-3 p-2"
-                onClick={clearCart}
+                <button
+                  className="btn btn-dark w-100 mt-3 p-2"
+                  onClick={clearCart}
                 >
                   Vaciar Carrito
                 </button>

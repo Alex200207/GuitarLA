@@ -88,9 +88,6 @@ function clearCart(){
 }
 
 
-
-
-
   return (
     <>
       <Header 
