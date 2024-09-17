@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 function Header({
@@ -7,32 +7,11 @@ function Header({
   increaseQuantity,
   decreaseQuantity,
   clearCart,
+  cartTotal,
+  totalItems,
+  isEmpty,
 }) {
-  const isEmpty = useMemo(() => cart.length === 0, [cart]); //useMemo es un hook que se usa para memorizar un valor y solo se recalcula cuando las dependencias cambian
-  //lo ocuparemos para que tenga un mejor rendimiento y no se recalcule en cada renderizado
-  /*useMemo es una forma en la cual puedes decir no hagas render completo de mi aplicacion hasta que no cambie algo establecido
-  entonces para eso es que es el arreglo de dependencias [cart] vuelve a renderizar hasta que carrito cambie le quitemos o 
-  agregemos elementos */
-
-  //state derivado para ver si el carrito esta vacio o no usando el state cart que se pasa como prop desde el componente padre
-  //si el carrito esta vacio muestra un mensaje de que esta vacio si no muestra la tabla con los productos
-  //porque es derivado ? porque se calcula a partir de otro estado que es el carrito y esta en el componente padre osea app.tsx
-
-  //const carTotal = () => cart.reduce((total,item) => total + ( item.quantity * item.price ),0)
-
-  //lo que se hace es recorrer el carrito y por cada producto se multiplica el precio por la cantidad y se suma al total
-  //reduce recibe una funcion callback que se ejecuta por cada elemento del array y un valor inicial que en este caso es 0
-
-  ///utlizamos useMemo para memorizar el valor de la funcion carTotal y solo se recalcule cuando cambie el carrito
-  const cartTotal = useMemo(
-    () => cart.reduce((total, item) => total + item.quantity * item.price, 0),
-    [cart]
-  );
-
-  const totalItems = useMemo(//state derivado para ver cuantos productos hay en el carrito
-    () => cart.reduce((total, item) => total + item.quantity, 0),//se recorre el carrito y se suma la cantidad de cada producto
-    [cart]//dependencia del useMemo
-  );
+  
 
 
   return (

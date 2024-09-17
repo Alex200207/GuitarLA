@@ -10,7 +10,7 @@ export const db = [
         id: 2,
         name: 'SRV',
         image: 'guitarra_02',
-        description: 'Si eres fanático del blues, esta guitarra te hará sentir como Stevie Ray Vaughan. Su tono cálido y suave te permitirá expresar toda tu pasión por la música.',
+        description: '',
         price: 349,
     },
     {

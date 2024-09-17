@@ -1,0 +1,59 @@
+Crear tus propios hooks
+Existe un gran ventaja al crear nuestros propios hooks y es 
+la de incorporar State y otros hooks de react a tu propio codigo 
+para poder re-utilizar en otro proyecto.
+
+Otra gran ventaja es la de organizar tu codigo de esta forma el hook se 
+encarga de toda la logica del state mientras tu componente solo de mostrar
+la informacion.
+
+Ventajas
+de crear tus propios hooks
+tu codigo personalizado tendra todas las ventajs de react como son:
+
+re-utlizable en otros Proyectos
+
+facil de escribir pruebas
+
+Como crear tus propios hooks??
+
+Los hook son funciones de javascript pero tienen algunas
+reglas.
+
+-Tus hooks deben seguir la convencion de react use{hook} de esta formar
+react escanea tu codigo en busqueda de posible problemas con las 
+reglas de los hooks.
+
+un hook usualmente solo debe tener logica y no presentacion (para eso
+es un componente)
+-----------------------------------------------------------------------
+TypeScript  es un lenguaje de programacion de codigo abierto
+desarrollado y mantenido por Microsoft. Es un superconjunto tipado
+de javascript , lo que significa que cualquier codigo de javascript
+valido es codigo TypeScript valido
+
+La principal caracteristica de TypeScript es que agrega un sistema de 
+tipos estatico a javascript lo que permite detectar erroes y proporsionar
+herramientas de desarrollo mas solidas
+
+Ventajas de agregar TypeScript
+
+El sistema de tipos de TypeScript permite al programador especificar los
+tipos de varibles,parametros de funcion ,valores de retorno y mas. Esto 
+brinda la capacidad de realizar comprobaciones de tipos durante la 
+compilacion y detectar posibles errores antes de que el codigo se 
+ejecute
+
+TypeScript y javascript/react
+
+Una ves que se ha escrito el codigo TypeScript,este se compila a javascript
+
+React y Vite incluye soporte a TypeScript lo que ayuda bastante en el desarrollo
+de proyecto, y una vez listo podemos constuir el proyecto, se compila a 
+javascript y se puede acceder a el.
+
+Y hoy en dia TypeScript se ha convertido en un estandar para crear 
+aplicaciones React, Angular o Vue.js En una entrevista de trabajo
+estaras muy por delante de otros devs
+
+
